@@ -81,7 +81,7 @@ book-recommendation-system/
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/<your-username>/book-recommendation-system.git
+git clone https://github.com/zakir-maswani/Book-Recommendation-System.git
 cd book-recommendation-system
 ```
 
@@ -139,22 +139,22 @@ ratings.csv ──merge(ISBN)──> books.csv
         │
         ▼
 ┌─────────────────────────────┐      ┌──────────────────────────────────┐
-│   Popularity-Based Engine    │      │  Item-Based Collaborative Engine  │
-│                               │      │                                    │
-│  group by Book-Title          │      │  keep users with > 200 ratings    │
-│  ├─ count   → num_ratings     │      │  keep books with ≥ 50 ratings     │
-│  └─ mean    → avg_rating      │      │       among those users           │
-│                               │      │              │                    │
-│  keep books with               │      │              ▼                    │
-│  num_ratings ≥ 250             │      │  pivot: Book-Title × User-ID      │
-│       │                       │      │  (missing ratings → 0)            │
-│       ▼                       │      │              │                    │
-│  sort by avg_rating, top 50   │      │              ▼                    │
-│       │                       │      │  cosine_similarity(pivot table)   │
-│       ▼                       │      │              │                    │
-│   popular.pkl                  │      │              ▼                    │
+│   Popularity-Based Engine   │      │  Item-Based Collaborative Engine  │
+│                             │      │                                   │
+│  group by Book-Title        │      │  keep users with > 200 ratings    │
+│  ├─ count  → num_ratings    │      │  keep books with ≥ 50 ratings     │
+│  └─ mean    → avg_rating    │      │       among those users           │
+│                             │      │              │                    │
+│  keep books with            │      │              ▼                    │
+│  num_ratings ≥ 250          │      │  pivot: Book-Title × User-ID      │
+│       │                     │      │  (missing ratings → 0)            │
+│       ▼                     │      │              │                    │
+│  sort by avg_rating, top 50 │      │              ▼                    │
+│       │                     │      │  cosine_similarity(pivot table)   │
+│       ▼                     │      │              │                    │
+│   popular.pkl               │      │              ▼                    │
 └─────────────────────────────┘      │  pt.pkl + similarity_scores.pkl   │
-                                       └──────────────────────────────────┘
+                                      └──────────────────────────────────┘
 ```
 
 **Why these choices?**
